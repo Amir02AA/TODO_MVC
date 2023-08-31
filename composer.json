@@ -1,0 +1,10 @@
+{
+    "name": "asus/my_mvc",
+    "autoload": {
+        "psr-4": {
+            "": "app/",
+            "view\\": "views/"
+        }
+    },
+    "require": {}
+}
