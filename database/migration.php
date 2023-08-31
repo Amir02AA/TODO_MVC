@@ -7,12 +7,9 @@ include_once "config.php";
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Schema\Blueprint;
 
-Capsule::schema()->create('users',function (Blueprint $table){
+Capsule::schema()->create('tasks',function (Blueprint $table){
 
     $table->id();
-    $table->string('username')->unique();
-    $table->string('email')->unique();
-    $table->string('password');
-
+    $table->string('name')->unique();
 });
 

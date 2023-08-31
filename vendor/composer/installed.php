@@ -3,7 +3,7 @@
         'name' => 'asus/my_mvc',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'aef4ceb0ad46b7efa366ad10289d41b78e1d58fc',
+        'reference' => '72086ca09a8ba47623ee2e2c510ad4c8fab987a2',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'asus/my_mvc' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'aef4ceb0ad46b7efa366ad10289d41b78e1d58fc',
+            'reference' => '72086ca09a8ba47623ee2e2c510ad4c8fab987a2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

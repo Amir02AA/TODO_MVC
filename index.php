@@ -28,8 +28,15 @@ $app->router->post('/login', function () {
     if ($user) {
         echo "login";
     } else echo "user not found";
+
 });
 
+$app->router->get('/tasks/create' , 'tasks/create');
+$app->router->post('/tasks', function (){
+    $data = Request::getSanitizedData();
+    unset($data['submit']);
+    Capsule::table('tasks')->insert($data);
+});
 //$app->router->get('/home','home');
 //$app->router->get('/','home');
 
