@@ -1,5 +1,5 @@
 <?php
-
+namespace app;
 class App
 {
     public Router $router;
@@ -13,3 +13,4 @@ class App
         echo $this->router->resolve();
     }
 }
+

@@ -1,20 +1,23 @@
 <?php
 include_once "vendor/autoload.php";
+include_once "database/config.php";
 
+use app\App;
+use Illuminate\Database\Capsule\Manager as Capsule;
+//$results = Capsule::table('users')->get();
+//var_dump($results);
+//exit();
 $app = new App();
-$app->router->get('/home','home');
-$app->router->get('/','home');
-$app->router->get('/shop','shop');
 
-$app->router->post('/test','test');
-$app->router->get('/test','test');
-$app->router->setLayout('panel');
+$app->router->get('/register','register');
 
-$r = new Request();
-echo $r->getUrl();
-//$app->router->get('/login','login');
+$app->router->post('/register',function (){
+    $data = \app\Request::getSanitizedData();
+    unset($data['submit']);
+    Capsule::table('users')->insert($data);
+});
+//$app->router->get('/home','home');
+//$app->router->get('/','home');
 
-//echo "<pre>";
-//print_r($app->router->getFuncs());
-//echo "<pre>";
+
 $app->run();
