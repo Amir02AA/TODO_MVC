@@ -10,7 +10,12 @@ class TaskController
 {
     public function showTasks()
     {
-        return Render::renderURI('tasks');
+        $totalTasks = Capsule::table('tasks')->select()->get()->toArray();
+        $data = Request::getInstance()->getSanitizedData();
+        if (isset($data['delete'])) {
+            return $this->deleteTask();
+        }
+        return Render::renderURI('tasks', params: ['tasks' => $totalTasks]);
     }
 
     public function CRUDpage()
@@ -28,12 +33,12 @@ class TaskController
 
     public function TaskManager()
     {
-        $_POST = Request::getInstance()->getSanitizedData();
-        if (isset($_POST['submit'])) {
-            if ($_POST['submit'] == 'add') {
+        $data = Request::getInstance()->getSanitizedData();
+        if (isset($data['submit'])) {
+            if ($data['submit'] == 'add') {
                 return $this->createTask();
             }
-            if ($_POST['submit'] == 'update') {
+            if ($data['submit'] == 'update') {
                 return $this->updateTask();
             }
         }
@@ -41,7 +46,16 @@ class TaskController
 
     public function updateTask()
     {
+        $_POST = Request::getInstance()->getSanitizedData();
         Capsule::table('tasks')->where(['id' => $_POST['taskId']])->update(['name' => $_POST['taskName']]);
         return $this->CRUDpage();
+    }
+
+    public function deleteTask()
+    {
+        $data = Request::getInstance()->getSanitizedData();
+        Capsule::table('tasks')->delete($data['delete']);
+        header("location:/tasks");
+        return true;
     }
 }
