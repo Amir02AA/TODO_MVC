@@ -7,7 +7,6 @@ use controllers\LoginController;
 use core\Request;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-
 $app = new \core\Application();
 
 $app->router->get('/', 'register');
@@ -17,8 +16,6 @@ $app->router->get('/tasks/create' , [\controllers\TaskController::class,'CRUDpag
 
 $app->router->post('/login', [LoginController::class,'login']);
 $app->router->post('/register',[controllers\RegisterController::class,'register']);
-$app->router->post('/tasks/create', [controllers\TaskController::class,'createTask']);
-
-
+$app->router->post('/tasks/create', [controllers\TaskController::class,'TaskManager']);
 
 $app->run();

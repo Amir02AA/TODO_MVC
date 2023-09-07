@@ -20,14 +20,28 @@ class TaskController
 
     public function createTask()
     {
-            $data = Request::getInstance()->getSanitizedData();
-            unset($data['submit']);
-            Capsule::table('tasks')->insert($data);
+        $data = ['name' => Request::getInstance()->getSanitizedData()['taskName']];
+        Capsule::table('tasks')->insert($data);
+        return $this->CRUDpage();
 
+    }
+
+    public function TaskManager()
+    {
+        $_POST = Request::getInstance()->getSanitizedData();
+        if (isset($_POST['submit'])) {
+            if ($_POST['submit'] == 'add') {
+                return $this->createTask();
+            }
+            if ($_POST['submit'] == 'update') {
+                return $this->updateTask();
+            }
+        }
     }
 
     public function updateTask()
     {
-
+        Capsule::table('tasks')->where(['id' => $_POST['taskId']])->update(['name' => $_POST['taskName']]);
+        return $this->CRUDpage();
     }
 }
