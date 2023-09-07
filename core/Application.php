@@ -1,16 +1,19 @@
 <?php
-namespace app;
-class App
+
+namespace core;
+
+class Application
 {
     public Router $router;
+
     public function __construct()
     {
-        $this->router = new Router();
+        $this->router = Router::getInstance();
     }
 
     public function run()
     {
         echo $this->router->resolve();
     }
-}
 
+}
