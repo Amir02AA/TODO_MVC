@@ -11,6 +11,19 @@ class RegisterController
 {
     public function register()
     {
+        if (isset($_SESSION['flush'])){
+            $_SESSION['flush'] = !$_SESSION['flush'];
+        }else{
+            $_SESSION['flush'] = true;
+        }
+
+        if (!$_SESSION['flush']){
+            unset($_SESSION['flush']);
+//            echo $_SESSION['flush'];
+//            exit();
+            header("location:/");
+        }
+
         $data = Request::getInstance()->getSanitizedData();
         unset($data['submit']);
         if (!Register::validate($data)) {
@@ -18,12 +31,10 @@ class RegisterController
             header('location: /login');
         } else {
             $errors = Register::validate($data);
-            return Render::renderURI('register',params: [
+            return Render::renderURI('register', params: [
                 'errors' => $errors
             ]);
         }
-
-
     }
 
     public function registerPage()

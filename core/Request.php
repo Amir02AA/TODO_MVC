@@ -36,4 +36,6 @@ class Request
     {
         return array_map(fn($x) => htmlspecialchars($x), $data);
     }
+
+
 }

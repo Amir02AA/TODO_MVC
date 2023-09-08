@@ -8,6 +8,7 @@ class Application
 
     public function __construct()
     {
+        session_start();
         $this->router = Router::getInstance();
     }
 
