@@ -1,11 +1,17 @@
 {
-    "name": "asus/my_mvc",
-    "autoload": {
-        "psr-4": {
-            "": ""
-        }
+  "name": "asus/my_mvc",
+  "autoload": {
+    "psr-4": {
+      "": ""
     },
-    "require": {
-        "illuminate/database": "^10.21"
-    }
+    "files": [
+      "public/funcs/helper.php"
+    ]
+  },
+  "require": {
+    "illuminate/database": "^10.21",
+    "illuminate/validation": "^10.22",
+    "illuminate/filesystem": "^10.22",
+    "illuminate/translation": "^10.22"
+  }
 }
