@@ -21,7 +21,11 @@ class LoginController
             if ($user) {
                 Session::setSession(new Session($username));
                 Session::getSession()->setAuthSession();
-                header('Location:tasks');
+                if ($user->isAdmin){
+                    header("location:/admin");
+                }else{
+                    header('Location:/tasks');
+                }
             } else echo "user not found";
 
     }

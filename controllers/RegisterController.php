@@ -19,8 +19,6 @@ class RegisterController
 
         if (!$_SESSION['flush']){
             unset($_SESSION['flush']);
-//            echo $_SESSION['flush'];
-//            exit();
             header("location:/");
         }
 
